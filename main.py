@@ -6,6 +6,7 @@ class Main(QtWidgets.QStackedWidget):
         super().__init__()
         self.resize(800,480)
         self.addWidget(SeatMonitoring())
+        self.addWidget(QPushButton())
 
 
 if __name__ == "__main__":
@@ -13,5 +14,5 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     ui = Main()
     ui.show()
-    ui.setCurrentIndex(2)
+    ui.setCurrentIndex(0)
     app.exec_()
