@@ -7,7 +7,7 @@ class SeatMonitoring(QWidget):
     def __init__(self):
         super().__init__()
         self.resize(800, 480)
-        self.lists = [[randrange(0,3) for j in range(10 if i != 2 else 1)] for i in range(5)]
+        self.lists = [[randrange(0,3) for j in range(15 if i != 2 else 1)] for i in range(5)]
         self.colors = [QColor('gray'), QColor('green'), QColor('red')]
         print(self.lists)
 
@@ -15,10 +15,14 @@ class SeatMonitoring(QWidget):
         qp = QPainter()
         qp.begin(self)
         qp.fillRect(0, 0, 800, 480, QColor('white'))
+
+        cenX = 400 - (7.5 * 40)
+        cenY = 240 - (2.5 * 40)
         for i, col in enumerate(self.lists):
             for j, row in enumerate(col):
-                qp.fillRect(j * 50, i * 50, 30, 30, self.colors[row])
-
+                rect = QRect(cenX + j * 40, cenY + i * 40, 40, 40)
+                rect.adjust(7, 7, -7, -7)
+                qp.fillRect(rect, self.colors[row])
         qp.end()
         
 
