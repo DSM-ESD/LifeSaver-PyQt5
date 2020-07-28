@@ -4,8 +4,11 @@ class Main(QtWidgets.QStackedWidget):
     def __init__(self):
         super().__init__()
         self.resize(800,480)
+        self.addWidget(QtWidgets.QPushButton())
+        self.addWidget(QtWidgets.QFrame())
+        self.addWidget(QtWidgets.QDial())
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     ui = Main()
