@@ -12,8 +12,8 @@ class SeatMonitoring(QWidget):
         # allow custom wigdet to use style sheet
 
         file = open('res/bus.svg', 'r')
-        self.bus = QSvgWidget(''.join(file.readlines()))
-        self.bus.show()
+        self.render = QSvgRenderer('res/bus.svg')
+
         self.pager = pager
         self.lists = [[randrange(0,3) for j in range(15 if i != 2 else 1)] for i in range(5)]
         self.setStyleSheet('background-color: white')
@@ -25,6 +25,7 @@ class SeatMonitoring(QWidget):
         qp.begin(self)
         cenX = 400 - (7.5 * 40)
         cenY = 240 - (2.5 * 40)
+        self.render.render(qp, QRectF(33,95,734,290))
         for i, col in enumerate(self.lists):
             for j, row in enumerate(col):
                 rect = QRect(cenX + j * 40, cenY + i * 40, 40, 40)
