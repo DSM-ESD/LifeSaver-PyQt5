@@ -9,7 +9,6 @@ class Main(QtWidgets.QStackedWidget):
         self.pager.connect(self.setCurrentIndex)
 
         self.addWidget(SeatMonitoring(self.pager))
-        self.addWidget(QPushButton())
 
 
 

@@ -29,8 +29,6 @@ class SeatMonitoring(QWidget):
                 qp.fillRect(rect, self.colors[row])
         qp.end()
     
-    def mousePressEvent(self, event):
-        self.pager.emit(1)
 
 if __name__ == "__main__":
     import sys
