@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
+from PyQt5.QtSvg import *
 from random import *
 
 class SeatMonitoring(QWidget):
@@ -10,12 +11,14 @@ class SeatMonitoring(QWidget):
         self.setAttribute(Qt.WA_StyledBackground, True)
         # allow custom wigdet to use style sheet
 
+        file = open('res/bus.svg', 'r')
+        self.bus = QSvgWidget(''.join(file.readlines()))
+        self.bus.show()
         self.pager = pager
-
         self.lists = [[randrange(0,3) for j in range(15 if i != 2 else 1)] for i in range(5)]
         self.setStyleSheet('background-color: white')
         self.colors = [QColor('gray'), QColor('green'), QColor('red')]
-        print(self.lists)
+        file.close()
 
     def paintEvent(self, event):
         qp = QPainter()
