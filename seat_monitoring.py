@@ -14,7 +14,7 @@ class SeatMonitoring(QWidget):
         self.render = QSvgRenderer('res/bus.svg')
         self.lists = [[0 for j in range(7)] for i in range(3)]
         self.setStyleSheet('background-color: white')
-        self.colors = [QColor('gray'), QColor('green'), QColor('red')]
+        self.colors = [QColor(192,192,192), QColor('green'), QColor('red')]
 
     def paintEvent(self, event):
         qp = QPainter()
