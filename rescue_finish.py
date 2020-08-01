@@ -19,18 +19,26 @@ class Ui_rescue_finish(QtWidgets.QWidget):
         self.label.setFont(font)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         
-       
+    
+
         # label
-      
         self.label.setObjectName("rescue_finish")
         self.label.setText("구조요청 신호가 \n 정상적으로 보내졌습니다. \n")
         self.label.setStyleSheet('background:#1C972F; color: #FFFFFF; font-family: Roboto; font-style: normal;font-weight: bold;font-size: 30px;line-height: 35px; ') # stylesheet background color change
-       
+   
+        
         #돌아가기 버튼
         pybutton = QtWidgets.QPushButton('처음으로 돌아가기',self)        
         pybutton.resize(600,80)
         pybutton.move(100,360)
         pybutton.setStyleSheet("background: #5E6AD6; color : #FFFFFF; font-size: 27px; line-height: 27px; font-weight : bold; ")
+        pybutton.clicked.connect(self.movePage(0))
+
+    def movePage(self, index):
+        if index != 1: # 1이 아니면
+            self.g_Flag = False
+        self.pager.emit(index)
+
         
         
 

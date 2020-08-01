@@ -6,10 +6,10 @@ from time import sleep
 class Ui_rescue_1(QtWidgets.QWidget):
     def __init__(self, pager):
         super().__init__()
-        self.pager = pager
-        self.time = 20
-        self.g_Flag = True
-
+        self.pager = pager # 페이지 이동 pager
+        self.time = 20 # tiem 초기화
+        self.g_Flag = True # 기본으로 thread 켜기
+        
         self.setObjectName("rescue_1")
         self.resize(800,480)
         self.label = QtWidgets.QLabel(self)
@@ -40,25 +40,29 @@ class Ui_rescue_1(QtWidgets.QWidget):
         self.pybutton.setStyleSheet("background: #5E6AD6; color : #FFFFFF; font-size: 27px; line-height: 27px; font-weight : bold; ")
         self.pybutton.clicked.connect(lambda x: self.movePage(0))
 
-        self.pybutton2 = QtWidgets.QPushButton(f'요청..20',self)
+        self.pybutton2 = QtWidgets.QPushButton(f'요청..20',self) # 요청 버튼
         self.pybutton2.resize(250,80)
         self.pybutton2.move(450,360)
         self.pybutton2.setStyleSheet("background: #5E6AD6; color : #FFFFFF; font-size: 27px; line-height: 27px; font-weight : bold; ")
 
     def movePage(self, index):
-        if index == 0:
+        if index != 1: # 1이 아니면
             self.g_Flag = False
         self.pager.emit(index)
         
         
-    def CountTime(self):
+    def CountTime(self): # 1초 slepp함수
         self.g_Flag = True
-        self.time = 20
-        while self.time > 0 and self.g_Flag:
-            self.time -= 1
-            self.pybutton2.setText(f"요청..{self.time}")
+        self.time = 3
+        while self.time > 0 and self.g_Flag: # tiem이 0보다 크면서 g_Flag가 Treu 이면
+            self.time -= 1 # tiem 1씩 감소
+            self.pybutton2.setText(f"요청..{self.time}") # 버튼 텍스트 바꾸기
+        
+            sleep(1)  # 1초간 딜레이
+        if self.time <= 0:
+            self.movePage(2) # 다음 페이지로 이동
             
-            sleep(1)
+   
 
 
 
