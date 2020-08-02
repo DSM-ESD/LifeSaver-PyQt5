@@ -20,9 +20,10 @@ class SeatMonitoring(QWidget):
     def createWidgets(self):
         self.requestBtn = Button('수동 구조 요청', self)
         self.requestBtn.setGeometry(400,400,200,80)
-        self.requestBtn.clicked.connect()
+        self.requestBtn.clicked.connect(self.onRequest)
         self.settingBtn = Button('설정', self)
         self.settingBtn.setGeometry(601,400,200,80)
+        self.settingBtn.clicked.connect(self.onSetting)
         self.titleLabel = Label('총 착석 인원 : 10', self, 24)
         self.titleLabel.setGeometry(0,0,800,100)
         self.teamLabel = Label('전좌석 모니터링', self, 15)
