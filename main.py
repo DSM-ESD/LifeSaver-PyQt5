@@ -7,7 +7,6 @@ class Main(QtWidgets.QStackedWidget):
         super().__init__()
         self.resize(800,480)
         self.pager.connect(self.setCurrentIndex)
-
         self.addWidget(SeatMonitoring(self.pager))
 
 
