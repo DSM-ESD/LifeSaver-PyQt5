@@ -23,7 +23,7 @@ class Ui_rescue_finish(QtWidgets.QWidget):
 
         # label
         self.label.setObjectName("rescue_finish")
-        self.label.setText("긴근 구조 요청을\n성공적으로 진행하였습니다.\n\n버스 기사님께서는 승객의\n상태를 확인하여 주시길 바랍니다.")
+        self.label.setText("긴급 구조 요청을\n성공적으로 진행하였습니다.\n\n버스 기사님께서는 승객의\n상태를 확인하여 주시길 바랍니다.")
         self.label.setStyleSheet('background:#1C972F; color: #FFFFFF; font-family: Roboto; font-style: normal;font-weight: bold;font-size: 30px;line-height: 35px; ') # stylesheet background color change
    
     

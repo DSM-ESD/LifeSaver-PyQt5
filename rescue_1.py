@@ -44,6 +44,9 @@ class Ui_rescue_1(QtWidgets.QWidget):
         self.pybutton2.resize(250,80)
         self.pybutton2.move(450,360)
         self.pybutton2.setStyleSheet("background: #5E6AD6; color : #FFFFFF; font-size: 27px; line-height: 27px; font-weight : bold; ")
+        self.pybutton2.clicked.connect(lambda x: self.movePage(2))
+
+
 
     def movePage(self, index):
         if index != 1: # 1이 아니면
@@ -53,7 +56,7 @@ class Ui_rescue_1(QtWidgets.QWidget):
         
     def CountTime(self): # 1초 slepp함수
         self.g_Flag = True
-        self.time = 3
+        self.time = 20
         while self.time > 0 and self.g_Flag: # tiem이 0보다 크면서 g_Flag가 Treu 이면
             self.time -= 1 # tiem 1씩 감소
             self.pybutton2.setText(f"요청..{self.time}") # 버튼 텍스트 바꾸기
