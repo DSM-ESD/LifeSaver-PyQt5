@@ -22,13 +22,13 @@ class Main(QtWidgets.QStackedWidget):
     def changePageEvent(self, index): #changeEvent
         self.setCurrentIndex(index) # 페이지 이동할 index로 페이지 이동
         if index == 1: # 만약 페이지가 1이면(구조요청 페이지)
+            self.th = None # 아니면 끄기
             self.th = threading.Thread(target = self.widget(1).CountTime) #thread 위젯1일때 계속 실행
             self.th.daemon = True
             self.th.start() # thread 시작
             
         else:
             self.th.join()
-            self.th = None # 아니면 끄기
 
 
 if __name__ == "__main__":
