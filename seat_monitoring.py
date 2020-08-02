@@ -20,6 +20,7 @@ class SeatMonitoring(QWidget):
     def createWidgets(self):
         self.requestBtn = Button('수동 구조 요청', self)
         self.requestBtn.setGeometry(400,400,200,80)
+        self.requestBtn.clicked.connect()
         self.settingBtn = Button('설정', self)
         self.settingBtn.setGeometry(601,400,200,80)
         self.titleLabel = Label('총 착석 인원 : 10', self, 24)
@@ -27,12 +28,10 @@ class SeatMonitoring(QWidget):
         self.teamLabel = Label('전좌석 모니터링', self, 15)
         self.teamLabel.setGeometry(0,0,200,100)
     
-
     def paintEvent(self, event):
         qp = QPainter(self)
         self.bus.render(qp, QRectF(33, 95, 734, 290))
         #draw bus
-
         count = [0,0,0]
         cX = 161
         cY = [141, 233, 289]
@@ -55,9 +54,17 @@ class SeatMonitoring(QWidget):
             qp.fillRect(20 + i * 120, 430, 20, 20, self.colors[i])
             qp.drawText(50 + i * 120, 445, state[i] + str(count[i]))
             # draw state
-
         qp.end()
     
+    def changeState(self, y, x, state):
+        self.lists[y][x] = state
+        self.update()
+
+    def onRequest(self):
+        pass
+
+    def onSetting(self):
+        pass
 
 if __name__ == "__main__":
     import sys
