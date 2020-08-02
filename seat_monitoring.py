@@ -22,6 +22,10 @@ class SeatMonitoring(QWidget):
         self.requestBtn.setGeometry(400,400,200,80)
         self.settingBtn = Button('설정', self)
         self.settingBtn.setGeometry(601,400,200,80)
+        self.titleLabel = Label('총 착석 인원 : 10', self, 24)
+        self.titleLabel.setGeometry(0,0,800,100)
+        self.teamLabel = Label('전좌석 모니터링', self, 15)
+        self.teamLabel.setGeometry(0,0,200,100)
     
 
     def paintEvent(self, event):
@@ -51,7 +55,7 @@ class SeatMonitoring(QWidget):
             qp.fillRect(20 + i * 120, 430, 20, 20, self.colors[i])
             qp.drawText(50 + i * 120, 445, state[i] + str(count[i]))
             # draw state
-            
+
         qp.end()
     
 
