@@ -13,7 +13,7 @@ class SeatMonitoring(QWidget):
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.pager = pager
         self.bus = QSvgRenderer('res/bus.svg')
-        self.lists = [[randrange(0,3) for j in range(7)] for i in range(3)]
+        self.lists = [[0 for j in range(7)] for i in range(3)]
         self.setStyleSheet('SeatMonitoring { background-color: white }')
         self.colors = [QColor(0xC4C4C4), QColor(0xFF0000), QColor(0x3300FF)]
         self.createWidgets()
@@ -63,7 +63,7 @@ class SeatMonitoring(QWidget):
         self.update()
 
     def onRequest(self):
-        pass
+        self.pager.emit(1)
 
     def onSetting(self):
         pass

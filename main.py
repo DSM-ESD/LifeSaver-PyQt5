@@ -1,5 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from seat_monitoring import *
+from SeatMonitoring import *
+from RescueRequest import *
+from RescueFinished import *
 
 class Main(QtWidgets.QStackedWidget):
     pager = pyqtSignal(int)
@@ -7,7 +9,16 @@ class Main(QtWidgets.QStackedWidget):
         super().__init__()
         self.resize(800,480)
         self.pager.connect(self.setCurrentIndex)
-        self.addWidget(SeatMonitoring(self.pager))
+
+        monitoring = SeatMonitoring(self.pager)
+        self.addWidget(monitoring)
+
+        requset = RescueRequest(self.pager)
+        self.currentChanged.connect(requset.onPaging)
+        self.addWidget(requset)
+
+        finished = RescueFinished(self.pager)
+        self.addWidget(finished)
 
 
 
